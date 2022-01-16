@@ -57,10 +57,21 @@ module.exports = function(conf, context){
             var syncName = "sync_" + routes.action;
 
             if(cont[syncName]){
-                cont[syncName](resolve);
+                if(routes.mode == "success"){
+                    cont[syncName](resolve);
+                }
+                else{
+                    cont[syncName](resolve, routes.exception);
+                }
             }
             else if(cont[routes.action]){
-                cont[routes.action]();
+
+                if(routes.mode == "success"){
+                    cont[routes.action]();
+                }
+                else{
+                    cont[routes.action](routes.exception);
+                }
                 resolve();
             }
             else{
@@ -89,11 +100,17 @@ module.exports = function(conf, context){
         try{
             setController.bind(this)(routes, req, res);
         }catch(error){
-            res.write("[Framwork ERROR]");
-            res.write(error.stack.toString());
-            res.end();
 
+            var errorRoutes = routings.getError(req.url);
 
+            errorRoutes.exception = error;
+
+            try{
+                setController.bind(this)(errorRoutes, req, res);
+            }catch(error2){
+                res.write(error.stack.toString());
+                res.end();    
+            }
         }
     };
 
