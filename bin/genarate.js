@@ -131,6 +131,30 @@ module.exports = function(routings, conf, context, req, res){
                 goError(exception, req, res);
             }
 
+        }).then(function(resolve){
+
+            if(!conf.frameworks.templateEngine){
+                conf.frameworks.templateEngine = "hte";
+            }
+
+            var te = conf.frameworks.templateEngine;
+
+            if(te == "ejs"){
+
+
+            }
+            else if(te == "hte"){
+                var hte = require("hachiware_te");
+
+                var hts = new hte({
+                    path: __dirname + "/hte",
+                    errorDebug: true,
+                    load: "main.hte",
+                });
+
+                _string = hts.out();
+            }
+
         }).then(function(){
 
             res.statusCode = _statusCode;

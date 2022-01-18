@@ -4,8 +4,11 @@
  * 
  * Framework module of web server package "hachiware_server".
  * 
- * Author : Nakatsuji Masato 
- * GitHub : https://github.com/masatonakatsuji2021/hachiware_server_module_framework
+ * License : MIT License. 
+ * Since   : 2022.01.15
+ * Author  : Nakatsuji Masato 
+ * GitHub  : https://github.com/masatonakatsuji2021/hachiware_server_module_framework
+ * npm     : https://www.npmjs.com/package/hachiware_server_module_framework
  * =========================================================================================
  */
 
