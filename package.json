@@ -1,0 +1,34 @@
+{
+  "name": "hachiware_server_module_framework",
+  "version": "1.0.0",
+  "description": "web framework.",
+  "main": "index.js",
+  "dependencies": {
+    "hachiware_te": "^1.0.0"
+  },
+  "bin": {
+    "hachiware_server_module_framework": "genarate.js"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masatonakatsuji2021/hachiware_server_module_framework.git"
+  },
+  "keywords": [
+    "hachiware",
+    "hachiware_server",
+    "module",
+    "framework"
+  ],
+  "author": "Nakatsuji Masato",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/masatonakatsuji2021/hachiware_server_module_framework/issues"
+  },
+  "homepage": "https://github.com/masatonakatsuji2021/hachiware_server_module_framework#readme"
+}
