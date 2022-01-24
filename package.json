@@ -4,7 +4,8 @@
   "description": "web framework.",
   "main": "index.js",
   "dependencies": {
-    "hachiware_te": "^1.0.0"
+    "hachiware_te": "^1.0.0",
+    "hachiware_validator": "^1.0.0"    
   },
   "bin": {
     "hachiware_server_module_framework": "genarate.js"
