@@ -244,6 +244,7 @@ module.exports = function(routings, conf, context, req, res){
 
             _writed = true;
 
+            
             res.statusCode = _statusCode;
             res.write(_string);
             res.end();
