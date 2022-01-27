@@ -15,12 +15,86 @@
  */
 
 const Routing = require("hachiware_routing");
+const tool = require("hachiware_tool");
 const path = require("path");
 const generate = require("./bin/genarate.js");
 
 module.exports = function(conf, context){
 
     var routings;
+
+    try{
+
+        if(!conf.frameworks){
+            throw Error("Framework information is not set.");
+        }
+
+        if(!conf.frameworks.routings){
+            throw Error("Framework routing unconfigured.");
+        }
+
+        if(!conf.frameworks.templateEngine){
+            conf.frameworks.templateEngine = "hte";
+        }
+
+        const acceptTe = [
+            "html",
+            "hte",
+            "ejs",
+        ];
+
+        if(acceptTe.indexOf(conf.frameworks.templateEngine) === -1){
+            throw Error("This Template engine is not supported or dose not exist.");
+        }
+
+        if(!conf.frameworks.paths){
+            conf.frameworks.paths = {};
+        }
+
+        if(!conf.frameworks.paths.default){
+            conf.frameworks.paths.default = "frameworks";
+        }
+
+        if(!conf.frameworks.paths.controller){
+            conf.frameworks.paths.controller = conf.frameworks.paths.default + "/Controllers";
+        }
+
+        if(!conf.frameworks.paths.view){
+            conf.frameworks.paths.view = conf.frameworks.paths.default + "/Views";
+        }
+
+        if(!conf.frameworks.paths.layout){
+            conf.frameworks.paths.layout = conf.frameworks.paths.default + "/Layouts";
+        }
+
+        if(!conf.frameworks.paths.vpart){
+            conf.frameworks.paths.vpart = conf.frameworks.paths.default + "/Vparts";
+        }
+        
+        if(!conf.frameworks.paths.model){
+            conf.frameworks.paths.model = "/Models";
+        }
+
+        if(!conf.frameworks.paths.table){
+            conf.frameworks.paths.table = "/Tables";
+        }
+
+        if(!conf.frameworks.paths.validator){
+            conf.frameworks.paths.validator = "/Validators";
+        }
+
+        if(!conf.frameworks.paths.part){
+            conf.frameworks.paths.part = "/Parts";
+        }
+
+        if(!conf.frameworks.paths.shell){
+            conf.frameworks.paths.shell = "/Shells";
+        }
+
+    }catch(error){
+        context.color.red("[FW ERROR] ").outn(error);
+        process.exit();
+    }
 
     this.fookStart = function(){
         routings = new Routing("server", conf.frameworks.routings);
