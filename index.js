@@ -17,7 +17,7 @@
 const Routing = require("hachiware_routing");
 const tool = require("hachiware_tool");
 const path = require("path");
-const generate = require("./bin/genarate.js");
+const generate = require("./lib/genarate.js");
 
 module.exports = function(conf, context){
 
@@ -72,23 +72,23 @@ module.exports = function(conf, context){
         }
         
         if(!conf.frameworks.paths.model){
-            conf.frameworks.paths.model = "/Models";
+            conf.frameworks.paths.model = conf.frameworks.paths.default + "/Models";
         }
 
         if(!conf.frameworks.paths.table){
-            conf.frameworks.paths.table = "/Tables";
+            conf.frameworks.paths.table = conf.frameworks.paths.default + "/Tables";
         }
 
         if(!conf.frameworks.paths.validator){
-            conf.frameworks.paths.validator = "/Validators";
+            conf.frameworks.paths.validator = conf.frameworks.paths.default + "/Validators";
         }
 
         if(!conf.frameworks.paths.part){
-            conf.frameworks.paths.part = "/Parts";
+            conf.frameworks.paths.part = conf.frameworks.paths.default + "/Parts";
         }
 
         if(!conf.frameworks.paths.shell){
-            conf.frameworks.paths.shell = "/Shells";
+            conf.frameworks.paths.shell = conf.frameworks.paths.default + "/Shells";
         }
 
     }catch(error){
