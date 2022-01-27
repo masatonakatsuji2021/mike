@@ -70,7 +70,7 @@ module.exports = function(routings, conf, context, req, res){
 
     const dump = function(data){
         var dataStr = JSON.stringify(data, null, "   ");
-        this.$echo("<pre>" + dataStr + ",/pre>");
+        this.$echo("<pre>" + dataStr + "</pre>");
     };
 
     const setController = function(routes, req, res){
@@ -90,7 +90,7 @@ module.exports = function(routings, conf, context, req, res){
         }
 
         if(!fs.statSync(controllerPath).isFile()){
-            throw Error("\"" + controllerName + "\" is not File.(ファイルではない)");
+            throw Error("\"" + controllerName + "\" is not File.(Not a file.)");
         }
 
         controllerPath = controllerPath.split("/").join("\\");
@@ -99,16 +99,14 @@ module.exports = function(routings, conf, context, req, res){
             delete require.cache[controllerPath];
         }
 
+        var cont = require(controllerPath);
+
         try{
-
-            var cont = require(controllerPath);
-
             cont = new cont();
-
         }catch(error){
-            throw Error(error.stack.toString());
+            throw Error("The \"" + controllerName + "\" class cannot be loaded because the \"" + controllerName + "\" class does not exist or the code is incorrect.");
         }
-
+        
         cont.$req = req;
         cont.$res = res;
         cont.$routes = routes;
