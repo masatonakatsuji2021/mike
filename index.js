@@ -114,32 +114,41 @@ module.exports = function(conf, context){
      */
     this.fookConsole = function(rootPath, args, exitResolve){
 
-        var info = {};
+        var plan = null;
 
         context.then(function(resolve){
 
             this.outn("Hachiware Server Module Framework (Module Console).").br(2);
 
-            this.in("Q. Port the initial settings of framework to the configuration file \"" + path.basename(conf._file,".js") + "\". Is it OK? [y/n] (y)", function(value, retry){
+            this.outn("Create a sample from the plan below.").br()
+                .outn("  - hallo_world ...... Show Hello World in your browser")
+                .outn("  - readme ........... Various usage samples of the framework are available")
+                .outn("  - webapi ........... Web API that returns JSON format")
+                .br()
+                .in("Which plan do you want to output? (hallo_world)", function(value, retry){
 
-                if(!value){
-                    value = "y";
-                }
+                    if(!value){
+                        value = "hallo_world";
+                    }
 
-                value = value.toLowerCase();
+                    var list = ["hallo_world","readme","webapi"];
 
-                if(value == "y"){
-                    return resolve();
-                }
+                    if(list.indexOf(value) == -1){
+                        this.color.red("  [Error] ").outn("No plan entered. retry");
+                        return retry();
+                    }
 
-                this.br(2).outn(".....Cancel");
+                    plan = value;
 
-                exitResolve();
-            });
+                    resolve();
+                });
+
 
         }).then(function(){
 
-            console.log("OK!");
+
+
+
 
         }).start();
 
