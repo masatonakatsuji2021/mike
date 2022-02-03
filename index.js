@@ -21,8 +21,6 @@ const generate = require("./lib/genarate.js");
 
 module.exports = function(conf, context){
 
-    var routings;
-
     try{
 
         if(!conf.frameworks){
@@ -96,9 +94,7 @@ module.exports = function(conf, context){
         process.exit();
     }
 
-    this.fookStart = function(){
-        routings = new Routing("server", conf.frameworks.routings);
-    };
+    const routings = new Routing("server", conf.frameworks.routings);
 
     /**
      * fookRequest
