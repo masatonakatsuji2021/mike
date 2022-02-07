@@ -1,2 +1,3 @@
-# hachiware_server_module_framework
-web framework.
+# Mike
+
+MVC framework server module for hachiware_server
