@@ -1,7 +1,7 @@
 {
-  "name": "hachiware_server_module_framework",
+  "name": "mike_js",
   "version": "1.0.1",
-  "description": "web framework.",
+  "description": "MVC framework server module for \"hachiware_server\".",
   "main": "index.js",
   "dependencies": {
     "hachiware_te": "^1.0.0",
@@ -19,18 +19,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/masatonakatsuji2021/hachiware_server_module_framework.git"
+    "url": "git+https://github.com/masatonakatsuji2021/mike.git"
   },
   "keywords": [
     "hachiware",
     "hachiware_server",
     "module",
-    "framework"
+    "framework",
+    "mvc",
+    "web system"
   ],
   "author": "Nakatsuji Masato",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/masatonakatsuji2021/hachiware_server_module_framework/issues"
+    "url": "https://github.com/masatonakatsuji2021/mike/issues"
   },
   "homepage": "https://hachiware-js.com/"
 }
