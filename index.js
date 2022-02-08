@@ -1,6 +1,6 @@
 /**
  * =========================================================================================
- * Hachiware_Server_module_framework
+ * mike
  * 
  * Framework module of web server package "hachiware_server".
  * 
@@ -9,8 +9,8 @@
  * Author  : Nakatsuji Masato 
  * Email   : nakatsuji@teastalk.jp
  * HP URL  : https://hachiware-js.com/
- * GitHub  : https://github.com/masatonakatsuji2021/hachiware_server_module_framework
- * npm     : https://www.npmjs.com/package/hachiware_server_module_framework
+ * GitHub  : https://github.com/masatonakatsuji2021/mike
+ * npm     : https://www.npmjs.com/package/mike
  * =========================================================================================
  */
 
@@ -23,16 +23,16 @@ module.exports = function(conf, context){
 
     try{
 
-        if(!conf.frameworks){
+        if(!conf.mikes){
             throw Error("Framework information is not set.");
         }
 
-        if(!conf.frameworks.routings){
+        if(!conf.mikes.routings){
             throw Error("Framework routing unconfigured.");
         }
 
-        if(!conf.frameworks.templateEngine){
-            conf.frameworks.templateEngine = "hte";
+        if(!conf.mikes.templateEngine){
+            conf.mikes.templateEngine = "hte";
         }
 
         const acceptTe = [
@@ -41,52 +41,52 @@ module.exports = function(conf, context){
             "ejs",
         ];
 
-        if(acceptTe.indexOf(conf.frameworks.templateEngine) === -1){
+        if(acceptTe.indexOf(conf.mikes.templateEngine) === -1){
             throw Error("This Template engine is not supported or dose not exist.");
         }
 
-        if(!conf.frameworks.paths){
-            conf.frameworks.paths = {};
+        if(!conf.mikes.paths){
+            conf.mikes.paths = {};
         }
 
-        if(!conf.frameworks.paths.default){
-            conf.frameworks.paths.default = "frameworks";
+        if(!conf.mikes.paths.default){
+            conf.mikes.paths.default = "mikes";
         }
 
-        if(!conf.frameworks.paths.controller){
-            conf.frameworks.paths.controller = conf.frameworks.paths.default + "/Controllers";
+        if(!conf.mikes.paths.controller){
+            conf.mikes.paths.controller = conf.mikes.paths.default + "/Controllers";
         }
 
-        if(!conf.frameworks.paths.view){
-            conf.frameworks.paths.view = conf.frameworks.paths.default + "/Views";
+        if(!conf.mikes.paths.view){
+            conf.mikes.paths.view = conf.mikes.paths.default + "/Views";
         }
 
-        if(!conf.frameworks.paths.layout){
-            conf.frameworks.paths.layout = conf.frameworks.paths.default + "/Layouts";
+        if(!conf.mikes.paths.layout){
+            conf.mikes.paths.layout = conf.mikes.paths.default + "/Layouts";
         }
 
-        if(!conf.frameworks.paths.vpart){
-            conf.frameworks.paths.vpart = conf.frameworks.paths.default + "/Vparts";
+        if(!conf.mikes.paths.vpart){
+            conf.mikes.paths.vpart = conf.mikes.paths.default + "/Vparts";
         }
         
-        if(!conf.frameworks.paths.model){
-            conf.frameworks.paths.model = conf.frameworks.paths.default + "/Models";
+        if(!conf.mikes.paths.model){
+            conf.mikes.paths.model = conf.mikes.paths.default + "/Models";
         }
 
-        if(!conf.frameworks.paths.table){
-            conf.frameworks.paths.table = conf.frameworks.paths.default + "/Tables";
+        if(!conf.mikes.paths.table){
+            conf.mikes.paths.table = conf.mikes.paths.default + "/Tables";
         }
 
-        if(!conf.frameworks.paths.validator){
-            conf.frameworks.paths.validator = conf.frameworks.paths.default + "/Validators";
+        if(!conf.mikes.paths.validator){
+            conf.mikes.paths.validator = conf.mikes.paths.default + "/Validators";
         }
 
-        if(!conf.frameworks.paths.part){
-            conf.frameworks.paths.part = conf.frameworks.paths.default + "/Parts";
+        if(!conf.mikes.paths.part){
+            conf.mikes.paths.part = conf.mikes.paths.default + "/Parts";
         }
 
-        if(!conf.frameworks.paths.shell){
-            conf.frameworks.paths.shell = conf.frameworks.paths.default + "/Shells";
+        if(!conf.mikes.paths.shell){
+            conf.mikes.paths.shell = conf.mikes.paths.default + "/Shells";
         }
 
     }catch(error){
@@ -94,7 +94,7 @@ module.exports = function(conf, context){
         process.exit();
     }
 
-    const routings = new Routing("server", conf.frameworks.routings);
+    const routings = new Routing("server", conf.mikes.routings);
 
     /**
      * fookRequest
