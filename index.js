@@ -18,6 +18,7 @@ const Routing = require("hachiware_routing");
 const tool = require("hachiware_tool");
 const path = require("path");
 const generate = require("./lib/genarate.js");
+const generateSocket = require("./lib/generateSocket.js");
 
 module.exports = function(conf, context){
 
@@ -55,6 +56,10 @@ module.exports = function(conf, context){
 
         if(!conf.mikes.paths.controller){
             conf.mikes.paths.controller = conf.mikes.paths.default + "/Controllers";
+        }
+
+        if(!conf.mikes.paths.socket){
+            conf.mikes.paths.socket = conf.mikes.paths.default + "/Sockets";
         }
 
         if(!conf.mikes.paths.view){
@@ -107,6 +112,15 @@ module.exports = function(conf, context){
     };
 
     /**
+     * fookSocket
+     * @param {*} webSocketServer 
+     * @param {*} socket 
+     */
+    this.fookSocket = function(webSocketServer, socket){
+        generateSocket(routings, conf, context, webSocketServer, socket);
+    };
+
+    /**
      * fookConsole
      * @param {*} rootPath 
      * @param {*} args 
@@ -145,7 +159,6 @@ module.exports = function(conf, context){
 
 
         }).then(function(){
-
 
 
 
