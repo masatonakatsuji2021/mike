@@ -15,10 +15,9 @@
  */
 
 const Routing = require("hachiware_routing");
-const tool = require("hachiware_tool");
-const path = require("path");
 const generate = require("./lib/genarate.js");
 const generateSocket = require("./lib/generateSocket.js");
+const generateConsole = require("./lib/generateConsole.js");
 
 module.exports = function(conf, context){
 
@@ -127,6 +126,11 @@ module.exports = function(conf, context){
      * @param {*} exitResolve 
      */
     this.fookConsole = function(rootPath, args, exitResolve){
+
+        if(args.getOpt("command")){
+            var command = args.getOpt("command");
+            return generateConsole(routings, conf, context, command, exitResolve);
+        }
 
         var plan = null;
 
